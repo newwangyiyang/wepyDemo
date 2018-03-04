@@ -1,0 +1,35 @@
+<template>
+  <view class="tit_box">
+      <text>{{msgText}}</text>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class MyComponent extends wepy.component {
+    data = {
+
+    };
+    props = {
+        msgText: {
+            type: String,
+            default: ''
+        }
+    }
+}
+</script>
+
+<style lang="less" scoped>
+.tit_box {
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    text {
+        font-size: 40rpx;
+        color: #333;
+        font-family: "宋体";
+        word-spacing: 2em;
+        padding-left: 50rpx;
+    }
+}
+</style>

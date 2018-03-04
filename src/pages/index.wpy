@@ -1,0 +1,77 @@
+<template>
+  <view class="index_wrap">
+    <swiper class="img_box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}" indicator-active-color="{{indicatorColor}}">
+      <repeat for="{{imgUrls}}" key="index" index="index" item="item">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" mode="widthFix"/>
+        </swiper-item>
+      </repeat>
+    </swiper>
+    <indexTitle :msgText="propsData"/>
+    <view class="model_wrap">
+      <repeat for="{{goodsImg}}" key="index" index="index" item="item">
+        <listModel :imgItem="item"/>
+      </repeat>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import indexTitle from '../components/indexTitle';
+import listModel from '../components/listModel';
+export default class IndexPage extends wepy.page {
+  data = {
+    imgUrls: [
+      'http://img06.tooopen.com/images/20171124/tooopen_sy_228926983142.jpg',
+      'http://img06.tooopen.com/images/20171217/tooopen_sy_230514525773.jpg',
+      'http://img06.tooopen.com/images/20171214/tooopen_sy_230333228199.jpg',
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    duration: 500,
+    interval: 2000,
+    indicatorColor: "#3498db",
+
+    propsData: '美好西安',
+    goodsImg: [
+      'http://img06.tooopen.com/images/20171124/tooopen_sy_228926983142.jpg',
+      'http://img06.tooopen.com/images/20171217/tooopen_sy_230514525773.jpg',
+      'http://img06.tooopen.com/images/20171214/tooopen_sy_230333228199.jpg',
+      'http://img07.tooopen.com/images/20170922/tooopen_sy_225230576346.jpg',
+      'http://img06.tooopen.com/images/20170106/tooopen_sy_195886579867.jpg',
+      'http://img06.tooopen.com/images/20170106/tooopen_sy_195868374826.jpg',
+      'http://img07.tooopen.com/images/20170811/tooopen_sy_219898696246.jpg',
+      'http://img07.tooopen.com/images/20170802/tooopen_sy_218708947367.jpg',
+    ],
+  };
+  config = {
+    backgroundTextStyle: 'light',
+    navigationBarBackgroundColor: '#3498db',
+    navigationBarTitleText: 'demo',
+    navigationBarTextStyle: 'white'
+  };
+  components = {
+    indexTitle,
+    listModel
+  }
+}
+</script>
+
+<style lang="less" scoped>
+.index_wrap {
+  .img_box {
+    width: 100vw;
+    height: 500rpx;
+    image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .model_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
+</style>
